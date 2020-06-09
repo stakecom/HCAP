@@ -1,0 +1,30 @@
+<!DOCTYPE RCC><RCC version="1.0">
+    <qresource prefix="/translations">
+        <file alias="bg">locale/healcapital_bg.qm</file>
+        <file alias="ca">locale/healcapital_ca.qm</file>
+        <file alias="cs">locale/healcapital_cs.qm</file>
+        <file alias="da">locale/healcapital_da.qm</file>
+        <file alias="de">locale/healcapital_de.qm</file>
+        <file alias="en">locale/healcapital_en.qm</file>
+        <file alias="en_US">locale/healcapital_en_US.qm</file>
+        <file alias="es">locale/healcapital_es.qm</file>
+        <file alias="fi">locale/healcapital_fi.qm</file>
+        <file alias="fr_FR">locale/healcapital_fr_FR.qm</file>
+        <file alias="hr">locale/healcapital_hr.qm</file>
+        <file alias="it">locale/healcapital_it.qm</file>
+        <file alias="ja">locale/healcapital_ja.qm</file>
+        <file alias="ko_KR">locale/healcapital_ko_KR.qm</file>
+        <file alias="nl">locale/healcapital_nl.qm</file>
+        <file alias="pl">locale/healcapital_pl.qm</file>
+        <file alias="pt">locale/healcapital_pt.qm</file>
+        <file alias="pt_BR">locale/healcapital_pt_BR.qm</file>
+        <file alias="ro_RO">locale/healcapital_ro_RO.qm</file>
+        <file alias="ru">locale/healcapital_ru.qm</file>
+        <file alias="sk">locale/healcapital_sk.qm</file>
+        <file alias="sv">locale/healcapital_sv.qm</file>
+        <file alias="tr">locale/healcapital_tr.qm</file>
+        <file alias="uk">locale/healcapital_uk.qm</file>
+        <file alias="zh_CN">locale/healcapital_zh_CN.qm</file>
+        <file alias="zh_TW">locale/healcapital_zh_TW.qm</file>
+    </qresource>
+</RCC>

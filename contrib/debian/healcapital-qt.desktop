@@ -1,0 +1,12 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=HealCapital
+Comment=HealCapital P2P Cryptocurrency
+Comment[fr]=HealCapital, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=HealCapital, eşten eşe kriptografik sanal para birimi
+Exec=healcapital-qt %u
+Terminal=false
+Type=Application
+Icon=healcapital128
+MimeType=x-scheme-handler/healcapital;
+Categories=Office;Finance;

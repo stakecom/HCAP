@@ -1,0 +1,26 @@
+[Unit]
+Description=HealCapital's distributed currency daemon
+After=network.target
+
+[Service]
+User=healcapital
+Group=healcapital
+
+Type=forking
+PIDFile=/var/lib/healcapitald/healcapitald.pid
+
+ExecStart=/usr/bin/healcapitald -daemon -pid=/var/lib/healcapitald/healcapitald.pid \
+          -conf=/etc/healcapital/healcapital.conf -datadir=/var/lib/healcapitald
+
+ExecStop=-/usr/bin/healcapital-cli -conf=/etc/healcapital/healcapital.conf \
+         -datadir=/var/lib/healcapitald stop
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
