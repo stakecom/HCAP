@@ -226,10 +226,10 @@ QT_TRANSLATE_NOOP("healcapital-core", ""
 QT_TRANSLATE_NOOP("healcapital-core", ""
 "You must specify a masternodeprivkey in the configuration. Please see "
 "documentation for help."),
-QT_TRANSLATE_NOOP("healcapital-core", "(21103 could be used only on mainnet)"),
+QT_TRANSLATE_NOOP("healcapital-core", "(20200 could be used only on mainnet)"),
 QT_TRANSLATE_NOOP("healcapital-core", "(default: %s)"),
 QT_TRANSLATE_NOOP("healcapital-core", "(default: 1)"),
-QT_TRANSLATE_NOOP("healcapital-core", "(must be 21103 for mainnet)"),
+QT_TRANSLATE_NOOP("healcapital-core", "(must be 20200 for mainnet)"),
 QT_TRANSLATE_NOOP("healcapital-core", "<category> can be:"),
 QT_TRANSLATE_NOOP("healcapital-core", "Accept command line and JSON-RPC commands"),
 QT_TRANSLATE_NOOP("healcapital-core", "Accept connections from outside (default: 1 if no -proxy or -connect)"),
