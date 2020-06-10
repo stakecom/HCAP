@@ -132,7 +132,7 @@ public:
         nMaxMoneyOut = 840 * 1000 * 1000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 301;
+        nLastPOWBlock = 330;
 
         nModifierUpdateBlock = 6025;
         nStakeMinAmount = 100 * COIN;
