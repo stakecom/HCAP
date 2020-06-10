@@ -72,8 +72,8 @@ void CActiveMasternode::ManageStatus()
             return;
 
         LogPrintf("CActiveMasternode::ManageStatus() - Checking inbound connection to '%s'\n", service.ToString());
-
-        CNode* pnode = ConnectNode((CAddress)service, NULL, false);
+// FIXED akuma
+        CNode* pnode = ConnectNode((CAddress)service, NULL, true);
         if (!pnode) {
             notCapableReason = "Could not connect to " + service.ToString();
             LogPrintf("CActiveMasternode::ManageStatus() - not capable: %s\n", notCapableReason);

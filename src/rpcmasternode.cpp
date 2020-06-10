@@ -282,8 +282,8 @@ UniValue masternodeconnect(const UniValue& params, bool fHelp)
     std::string strAddress = params[0].get_str();
 
     CService addr = CService(strAddress);
-
-    CNode* pnode = ConnectNode((CAddress)addr, NULL, false);
+//FIXED akuma
+    CNode* pnode = ConnectNode((CAddress)addr, NULL, true);
     if (pnode) {
         pnode->Release();
         return NullUniValue;
