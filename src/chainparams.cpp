@@ -53,16 +53,14 @@ static void convertSeed6(std::vector<CAddress>& vSeedsOut, const SeedSpec6* data
 //    timestamp before)
 // + Contains no strange transactions
 static Checkpoints::MapCheckpoints mapCheckpoints =
-    boost::assign::map_list_of(0, uint256("0x000007cabcfba44b7a728f1746bdec842c9fefab32e8e9df3e18d28ecc265eb3"))
-                              (4000, uint256("0x000000af6445b242825821779256169686e448ff8343e994816727a02cfb013d"))
-                              (8500, uint256("0xaf7e825f0e62988090a6262b4c240a7985f9989806c76d1727ac2d2aabb38177"));
+    boost::assign::map_list_of(0, uint256("0x00001d61db4e19b72d893e347e54bf4e49eea0d76c53703bfd8fb255ea2c8f3a"));
 
 static const Checkpoints::CCheckpointData data = {
     &mapCheckpoints,
-    1576361661, // * UNIX timestamp of last checkpoint block
-    11006,      // * total number of transactions between genesis and last checkpoint
+    0, // * UNIX timestamp of last checkpoint block
+    0,      // * total number of transactions between genesis and last checkpoint
                 //   (the tx=... number in the SetBestChain debug.log lines)
-    2345        // * estimated number of transactions per day after checkpoint
+    0        // * estimated number of transactions per day after checkpoint
 };
 
 static Checkpoints::MapCheckpoints mapCheckpointsTestnet =
@@ -114,12 +112,13 @@ public:
          * The characters are rarely used upper ASCII, not valid as UTF-8, and produce
          * a large 4-byte int at any alignment.
          */
-        pchMessageStart[0] = 0x53; //M
-        pchMessageStart[1] = 0x4f; //A
-        pchMessageStart[2] = 0x56; //L
-        pchMessageStart[3] = 0x45; //W
+        pchMessageStart[0] = 0x48; //H
+        pchMessageStart[1] = 0x43; //C
+        pchMessageStart[2] = 0x41; //A
+        pchMessageStart[3] = 0x50; //P
+//FIXME akuma to fix
         vAlertPubKey = ParseHex("04538b592eda1a271eebf89a209aaa60c6222613b905201287262b86bec10274dabdb2df865c9fd6c30e1b116c94136b6c4515d4caf7b607cdb45decfdf12dd498");
-        nDefaultPort = 21103;
+        nDefaultPort = 20200;
         bnProofOfWorkLimit = ~uint256(0) >> 20;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -130,59 +129,54 @@ public:
         nTargetSpacing =  1*60;
         nMaturity = 180;
         nMasternodeCountDrift = 20;
-        nMaxMoneyOut = 315000000 * COIN;
+        nMaxMoneyOut = 840 * 1000 * 1000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 6001;
+        nLastPOWBlock = 301;
 
         nModifierUpdateBlock = 6025;
-        nStakeMinAmount = 500 * COIN;
+        nStakeMinAmount = 100 * COIN;
 
-        nZerocoinStartHeight = 6002;
+        nZerocoinStartHeight = 1440 * 365;
 
-        /**
-         * Build the genesis block. Note that the output of the genesis coinbase cannot
-         * be spent as it did not originally exist in the database.
-         *
-         * CBlock(hash=00000ffd590b14, ver=1, hashPrevBlock=00000000000000, hashMerkleRoot=e0028e, nTime=1390095618, nBits=1e0ffff0, nNonce=28917698, vtx=1)
-         *   CTransaction(hash=e0028e, ver=1, vin.size=1, vout.size=1, nLockTime=0)
-         *     CTxIn(COutPoint(000000, -1), coinbase 04ffff001d01044c5957697265642030392f4a616e2f3230313420546865204772616e64204578706572696d656e7420476f6573204c6976653a204f76657273746f636b2e636f6d204973204e6f7720416363657074696e6720426974636f696e73)
-         *     CTxOut(nValue=50.00000000, scriptPubKey=0xA9037BAC7050C479B121CF)
-         *   vMerkleTree: e0028e
-         */
-        const char* pszTimestamp = "November 18, 2019: Linux, Windows Users Targeted With New ACBackdoor Hcapare";
+        const char* pszTimestamp = "HCAP - a new test of stake 2020/06/10";
         CMutableTransaction txNew;
         txNew.vin.resize(1);
         txNew.vout.resize(1);
-        txNew.vin[0].scriptSig = CScript() << 486604799 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
-        txNew.vout[0].nValue = 1 * COIN;
-        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04d841cf5f76985b48858cee0915f7a543b1b9c384869ec3e8e2e0822530882ccb4b546cffbf54cf0a0853b09647932e7aa89ccfbd2bb27b021c9bf47997ca970b") << OP_CHECKSIG;
+        txNew.vin[0].scriptSig = CScript() << 20200610 << CScriptNum(4) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
+        txNew.vout[0].nValue = 0 * COIN;
+        txNew.vout[0].scriptPubKey = CScript() << ParseHex("04560e14defb047f5d1192ef95eb781716219b4954875b045065a06295d02a81b18336fd3c820e3789fd40926d480e94476643c7cb0a9a2127fc907a0d0d06530e") << OP_CHECKSIG;
         genesis.vtx.push_back(txNew);
         genesis.hashPrevBlock = 0;
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
         genesis.nVersion = 1;
-        genesis.nTime = 1574164800;
+        genesis.nTime = 1591754990; 
         genesis.nBits = 0x1e0ffff0;
-        genesis.nNonce = 1832696;
-
+        genesis.nNonce = 532681; 
+/*
+for(int ii=0;ii<1000000;ii++) {
+genesis.nNonce = ii;
+printf("nonce = %7d , hash = %s , merkle = %s\n",ii,genesis.GetHash().ToString().c_str(),genesis.hashMerkleRoot.ToString().c_str());
+}
+*/
         hashGenesisBlock = genesis.GetHash();
-        assert(hashGenesisBlock == uint256("0x00000a613765e27f78e893da7c16a40476c2d8608a03f075b984a8acb7188002"));
-        assert(genesis.hashMerkleRoot == uint256("0x02582b9dee21157316f6ffdc4afbe35dca6ab2b5fd812685aa3d003354838a20"));
+        assert(hashGenesisBlock == uint256("0x00001d61db4e19b72d893e347e54bf4e49eea0d76c53703bfd8fb255ea2c8f3a"));
+        assert(genesis.hashMerkleRoot == uint256("0x794c94cbaebf5f73b38c6dcfb96e4564e6ab3586b924d82bf1f8f9387923c109"));
 
         vSeeds.push_back(CDNSSeedData("node1", "45.249.244.140"));
         vSeeds.push_back(CDNSSeedData("node2", "152.32.169.75"));
         vSeeds.push_back(CDNSSeedData("node3", "47.75.14.207"));
 
 
-        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 51);
-        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 13);
-        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 212);
+        base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1, 40);
+        base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1, 99);
+        base58Prefixes[SECRET_KEY] = std::vector<unsigned char>(1, 100);
         base58Prefixes[EXT_PUBLIC_KEY] = boost::assign::list_of(0x02)(0x2D)(0x25)(0x33).convert_to_container<std::vector<unsigned char> >();
         base58Prefixes[EXT_SECRET_KEY] = boost::assign::list_of(0x02)(0x21)(0x31)(0x2B).convert_to_container<std::vector<unsigned char> >();
         // 	BIP44 coin type is from https://github.com/satoshilabs/slips/blob/master/slip-0044.md
         base58Prefixes[EXT_COIN_TYPE] = boost::assign::list_of(0x80)(0x00)(0x01)(0xbc).convert_to_container<std::vector<unsigned char> >();
 
-        bech32_hrp = "mr";
+        bech32_hrp = "hc";
 
         convertSeed6(vFixedSeeds, pnSeed6_main, ARRAYLEN(pnSeed6_main));
 
@@ -196,10 +190,12 @@ public:
         fHeadersFirstSyncingActive = false;
 
         nPoolMaxTransactions = 3;
-        strSporkKey = "0400a7f68f2747c07d13d8f5b23dae4a786fefa7ad0ff18c6e14c89317e375dd0ea72831a24c5feaf95f8e9935954b9bfc0e024dba0823e8d09c80c5015aad5f9b";
+        strSporkKey = "04eb3b36f7a8ab1987930b66af7640905e9b89b0100810ef9c1d297993d7f46646cc3bc2dc3718c970d6589efbedc31f5346effc489e0044fa932594921e51680b";
+//FIXME akuma to fix
         strObfuscationPoolDummyAddress = "MeGTNR1oWEbsTaNvxpUM6xh1zCS8AEqrUG";
 
         /** Zerocoin */
+//FIXME akuma to fix
         zerocoinModulus = "25195908475657893494027183240048398571429282126204032027777137836043662020707595556264018525880784"
             "4069182906412495150821892985591491761845028084891200728449926873928072877767359714183472702618963750149718246911"
             "6507761337985909570009733045974880842840179742910064245869181719511874612151517265463228221686998754918242243363"

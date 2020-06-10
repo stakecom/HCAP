@@ -30,7 +30,7 @@ bool CMasternodeConfig::read(std::string& strErr)
         if (configFile != NULL) {
             std::string strHeader = "# Masternode config file\n"
                                     "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                                    "# Example: mn1 127.0.0.2:21103 876pQA9mfCP1avCXBtaqCz7B9DJ8gzsH9iXmjJNbsAvZEXky9oY b0e585927e1737d07bd8157a2ba9f7615ef8ecd2af6d03523e51b4d23e134b6a 0\n";
+                                    "# Example: mn1 127.0.0.2:20200 876pQA9mfCP1avCXBtaqCz7B9DJ8gzsH9iXmjJNbsAvZEXky9oY b0e585927e1737d07bd8157a2ba9f7615ef8ecd2af6d03523e51b4d23e134b6a 0\n";
             fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
             fclose(configFile);
         }
@@ -61,17 +61,17 @@ bool CMasternodeConfig::read(std::string& strErr)
         }
 
         if (Params().NetworkID() == CBaseChainParams::MAIN) {
-            if (CService(ip).GetPort() != 21103) {
+            if (CService(ip).GetPort() != 20200) {
                 strErr = _("Invalid port detected in masternode.conf") + "\n" +
                          strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                         _("(must be 21103 for mainnet)");
+                         _("(must be 20200 for mainnet)");
                 streamConfig.close();
                 return false;
             }
-        } else if (CService(ip).GetPort() == 21103) {
+        } else if (CService(ip).GetPort() == 20200) {
             strErr = _("Invalid port detected in masternode.conf") + "\n" +
                      strprintf(_("Line: %d"), linenumber) + "\n\"" + line + "\"" + "\n" +
-                     _("(21103 could be used only on mainnet)");
+                     _("(20200 could be used only on mainnet)");
             streamConfig.close();
             return false;
         }
@@ -117,7 +117,7 @@ void CMasternodeConfig::writeToMasternodeConf()
 	// Add file header back as each time this runs it restarts the file
     std::string strHeader = "# Masternode config file\n"
                             "# Format: alias IP:port masternodeprivkey collateral_output_txid collateral_output_index\n"
-                            "# Example: mn1 127.0.0.2:21103 876pQA9mfCP1avCXBtaqCz7B9DJ8gzsH9iXmjJNbsAvZEXky9oY b0e585927e1737d07bd8157a2ba9f7615ef8ecd2af6d03523e51b4d23e134b6a 0\n";
+                            "# Example: mn1 127.0.0.2:20200 876pQA9mfCP1avCXBtaqCz7B9DJ8gzsH9iXmjJNbsAvZEXky9oY b0e585927e1737d07bd8157a2ba9f7615ef8ecd2af6d03523e51b4d23e134b6a 0\n";
     fwrite(strHeader.c_str(), std::strlen(strHeader.c_str()), 1, configFile);
 	
 	std::string masternodeAliasBase = "";
