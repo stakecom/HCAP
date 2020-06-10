@@ -4464,8 +4464,8 @@ for example: alertnotify=echo %%s | mail -s &quot;HealCapital Alert&quot; admin@
         <translation>設定ファイルにおいて masternodeprivkey を設定してください。詳しくはガイドを確認ください。</translation>
     </message>
     <message>
-        <source>(21103 could be used only on mainnet)</source>
-        <translation>(メインネットでは21103のみを用いてください)</translation>
+        <source>(20200 could be used only on mainnet)</source>
+        <translation>(メインネットでは20200のみを用いてください)</translation>
     </message>
     <message>
         <source>(default: %s)</source>
@@ -4476,8 +4476,8 @@ for example: alertnotify=echo %%s | mail -s &quot;HealCapital Alert&quot; admin@
         <translation>(デフォルト: 1)</translation>
     </message>
     <message>
-        <source>(must be 21103 for mainnet)</source>
-        <translation>(メインネットでは21103のみ)</translation>
+        <source>(must be 20200 for mainnet)</source>
+        <translation>(メインネットでは20200のみ)</translation>
     </message>
     <message>
         <source>Accept command line and JSON-RPC commands</source>
